@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 
 test('Launch electron app', async () => {
   const electronApp = await electron.launch({
-    args: ['./electron-react-boilerplate/src/main/main.ts'],
+    args: ['./release/app/dist/main/main.js'],
   });
 
   const windowState: {
