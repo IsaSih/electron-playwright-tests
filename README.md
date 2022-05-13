@@ -1,5 +1,3 @@
-<img src=".erb/img/erb-banner.svg" width="100%" />
-
 <br>
 
 <p> <a href="https://playwright.dev/">Playwright</a> was used to execute automated test cases in the application's first window</p>
