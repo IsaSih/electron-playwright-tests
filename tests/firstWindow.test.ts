@@ -29,14 +29,17 @@ test.describe('First Window Tests', async () => {
       return new Promise((resolve) => {
         if (mainWindow.isVisible()) {
           resolve(getState());
+        } else {
+          mainWindow.once('ready-to-show', () =>
+            setTimeout(() => resolve(getState()), 0)
+          );
         }
-        console.log(windowState);
       });
     });
   console.log(windowState);
-    // expect(windowState.isVisible).toBeTruthy();
-    // expect(windowState.isDevToolsOpened).toBeTruthy();
-    // expect(windowState.isCrashed).toBeFalsy();
+    await expect(windowState.isVisible).toBeTruthy();
+    await expect(windowState.isDevToolsOpened).toBeFalsy();
+    await expect(windowState.isCrashed).toBeFalsy();
   });
   test('Check title of first window', async () => {
     const fwtitle = await firstWindow.title();
