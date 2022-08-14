@@ -1,0 +1,21 @@
+name: Download-Unzip-Rancher-Desktop
+
+on:
+  push: {}
+  pull_request: {}
+
+jobs :
+  download_unzip_rancher_desktop:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        persist-credentials: false
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'
+    - run: npm ci    
+    - uses: montudor/action-zip@v1
+      with:
+    args: unzip -qq dir.zip -d dir
+    
