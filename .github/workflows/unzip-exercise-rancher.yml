@@ -6,7 +6,7 @@ on:
 
 jobs :
   download_unzip_rancher_desktop:
-    runs-on: self-hosted
+    runs-on: macos-10.15
     steps:
     - uses: actions/checkout@v3
       with:
