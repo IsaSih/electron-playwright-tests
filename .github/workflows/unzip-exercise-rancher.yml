@@ -1,4 +1,4 @@
-name: Download-Unzip-Rancher-Desktop
+name: Download-Rancher-Desktop
 
 on:
   push: {}
@@ -14,8 +14,6 @@ jobs :
     - uses: actions/setup-node@v3
       with:
         node-version: '16.x'
-    - run: npm ci    
-    - uses: montudor/action-zip@v1
-      with:
-    args: unzip -qq dir.zip -d dir
+    - run: npm run downloadrancher     
+
     
