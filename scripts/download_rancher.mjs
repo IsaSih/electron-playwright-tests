@@ -1,5 +1,6 @@
 import path from 'path';
-
+import os from 'os';
+import fs from 'fs';
 import fetch from 'node-fetch';
 
 import { download } from './lib/download.mjs';
@@ -14,10 +15,16 @@ if (!match) {
   throw new Error(`Can't find ${ pattern } in ${ rdHtml }`);
 }
 const installMacLink = match[0];
-console.log(match[0]);
-console.log(installMacLink);
-console.log(typeof installMacLink);
+
+console.log(`The file to be installed is from: ${installMacLink}`);
 
 const basename = path.basename(installMacLink);
 
-download(installMacLink, `/Users/isasih/Downloads/${ basename }`, { overwrite: true });
+const workDir = fs.mkdtempSync(path.join(os.tmpdir(), 'app-download'));
+//try {
+  const destPath = path.join(workDir, basename);
+  download(installMacLink, destPath, { overwrite: true });
+//} finally {
+  // clean up the temporary directory and everything in it
+  //fs.rmSync(workDir, { recursive: true });
+//}
