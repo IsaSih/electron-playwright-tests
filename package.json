@@ -14,7 +14,8 @@
     "start:preload": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.preload.dev.ts",
     "start:renderer": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack serve --config ./.erb/configs/webpack.config.renderer.dev.ts",
     "prepare": "husky install",
-    "test": "npx playwright test"
+    "test": "npx run playwright",
+    "downloadrancher": "node scripts/download_rancher.mjs"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -236,6 +237,8 @@
     "electron-log": "^4.4.6",
     "electron-updater": "^4.6.5",
     "history": "^5.3.0",
+    "node-fetch": "^3.2.10",
+    "node-libcurl": "^2.3.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0"
